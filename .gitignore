@@ -1,0 +1,4 @@
+# ignorar arquivo
+*.gitattributes
+*.env
+*.log

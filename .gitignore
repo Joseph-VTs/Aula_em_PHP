@@ -2,3 +2,6 @@
 *.gitattributes
 *.env
 *.log
+
+# Pasta de Entrada/Coneção ao MySQL
+Ligado ao MySQL/connect.php

@@ -1,5 +1,25 @@
 <?php
+function lerTxt(string $arquivo): array {
+    // 1. Verificação de existência e leitura
+    if (!file_exists($arquivo)) {
+        throw new Exception("Arquivo não encontrado: $arquivo");
+    }
+    if (!is_readable($arquivo)) {
+        throw new Exception("Arquivo não pode ser lido: $arquivo");
+    }
 
+    // 2. Leitura segura linha por linha
+    $linhas = file($arquivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    // 3. Tratamento: remove espaços extras
+    $linhas = array_map('trim', $linhas);
+
+    // 4. Retorna array pronto para uso
+    return $linhas;
+}
+
+$link = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FjIt36dtAb6NUmr4aCZmWGhkkcOmRxa2Zw&s";
+$estoque = "345.870";
 ?>
 
 <!DOCTYPE html>
@@ -7,61 +27,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_default.css">
     <title>Leitor de txt</title>
 </head>
 <body>
-    <style>
-        *{ margin: 0; padding: 0; box-sizing: border-box; border: none; }
-        .Card{
-            width: 10rem;
-            border: 1px solid red;
-            padding: 6px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
-            transition: scale 0.3s ease;
-        }
 
-        .img_Prod, img{
-            max-width: 100%;
-            height: auto;
-        }
-
-        .Desc_Prod{
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
-            padding: 6px;
-        }
-
-        button{
-            width: 100%;
-            padding: 8px;
-            background-color: green;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            color: black;
-            font-weight: 700;
-            transition: scale 0.5s ease;
-        }
-
-        button:hover, .Card:hover{
-            scale: 0.95;
-            cursor: pointer;
-        }
-    </style>
-
-    <div class="Card">
-        <div class="img_Prod"> <img src="https://www.hortifrutiorganico.com.br/120-large_default/banana-organica-prata-500g.jpg" alt="img_Produto"> </div>
-        <div class="Desc_Prod">
-            <p>Estoque: <span class="Tem_Prod">145.880kg</span></p>
-            <span class="Nome_Prod">Banana Caturra</span>
-            <span class="Preco_Prod">R$ 3.99</span>
-        </div>
-        <button>Comprar</button>
+    <div class="Prods">
+        <?php
+            try{
+            $dados = lerTxt(__DIR__ . "/produtos.txt");
+            
+            foreach ($dados as $i => $linha) {
+                echo '<div class="Card">';
+                echo '<div class="img_Prod"> <img src ="' . $link . '" alt="img_Produto"> </div>'; // img Produto
+                    echo '<div class="Desc_Prod">';
+                        echo '<p>Estoque: ' . $estoque . '</p>';
+                        echo '<span>' . $linha .  '</span>'; // Nome Produto
+                        echo '<span>' . $i . '</span>'; // Preço Produto
+                    echo '</div>';
+                    echo '<button>Comprar</button>';
+                echo '</div>';
+                    }
+            } catch (Exception $e) {
+                echo "<p style='color:red'>Erro: " . $e->getMessage() . "</p>";
+            }
+        ?>
     </div>
 </body>
 </html>

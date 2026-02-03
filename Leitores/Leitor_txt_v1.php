@@ -11,4 +11,12 @@ $linhas = explode(PHP_EOL, $conteudo);
 
 # 3.Ler linha a linha(simples)
 $linhas = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+// Intermediário
+# 4.Stream e leitura por bloco (evita estourar memória)
+$handle = fopen($path, 'r');
+while(($line = fgets($handle)) !== false) {
+    // Processa Line
+}
+fclose($handle);
 ?>

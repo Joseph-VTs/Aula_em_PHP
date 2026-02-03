@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.Prods {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.Card {
+    width: 10rem;
+    border: 1px solid red;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    transition: scale 0.3s ease;
+}
+
+.img_Prod,
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.Desc_Prod {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 8px;
+    background-color: green;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: black;
+    font-weight: 700;
+    transition: scale 0.5s ease;
+}
+
+button:hover,
+.Card:hover {
+    scale: 0.95;
+    cursor: pointer;
+}

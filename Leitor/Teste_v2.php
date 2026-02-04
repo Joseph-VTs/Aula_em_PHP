@@ -1,6 +1,6 @@
 <?php
 $link = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FjIt36dtAb6NUmr4aCZmWGhkkcOmRxa2Zw&s";
-$estoque = "394.795";
+// $estoque = "394.795";
 
 function lerCategorias(string $arquivo): array {
 
@@ -32,19 +32,48 @@ function lerCategorias(string $arquivo): array {
         $produtos = array_map("trim", explode(",", $produtosStr));
 
         foreach($produtos as $p){ // Divide Produtos e Preços
-            list($nome, $preco) = explode("=", $p);
+            list($nome, $preco_UN) = explode("=", $p);
+            // Separa preço e tipo
+            list($preco, $tipo) = explode("/", $preco_UN);
 
             // 5.Montagem do array final
             # $dados[trim($categoria)] = $produtos;
             # Cria um array associativo onde a chave é a categoria e o valor é a lista de produtos.
             $dados[trim($categoria)][] = [
                 "Nome" => trim($nome),
-                "Preço" => (float) trim($preco)
+                "Preço" => (float) trim($preco),
+                "Tipo" => trim($tipo)
             ];
         }
     }
 
     return $dados;
+}
+
+function ler_UN_KG(string $arquivo): array {
+    if(!file_exists($arquivo) || !is_readable($arquivo)){
+        throw new Exception("Arquivo não <b>Encontrado</b> ou não <b>Legível</b>: $arquivo");
+    }
+
+    $linhas = file($arquivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $dados = [];
+
+    foreach($linhas as $linha){
+        // Ignora Comentários (#)
+        if(strpos(trim($linha), "#") == 0) continue;
+
+        list($produto, $tipo) = explode("=", $linha);
+        $dados[trim($produto)] = trim($tipo);
+    }
+
+    return $dados;
+}
+
+try{
+    $categorias = lerCategorias(__DIR__ . "/UN_KG.txt");
+} catch(Exception $e){
+    echo "<p style='color:red'>Erro: " . $e->getMessage() . "</p>";
+    exit;
 }
 ?>
 
@@ -57,30 +86,36 @@ function lerCategorias(string $arquivo): array {
     <title>Teste de Leitor Horti.txt</title>
 </head>
 <body>
-    <?php
-        try{
-            $categoria = lerCategorias(__DIR__ . "/produtos.txt");
+    <?php foreach($categorias as $categoria => $produtos): ?>
+        <h2><?= $categoria ?></h2>
+        <div id="<?= strtolower($categoria) ?>" style="padding: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 8px;">
+            
+            <?php 
+                // $mapaTipos = ler_UN_KG(__DIR__ . "/UN_KG.txt");
+                foreach($produtos as $item):
+                    // $tipo = $mapaTipos[$item["Nome"]] ?? "kg"; // Padrão KG
+                    // $quantidade = ($tipo === "un") ? mt_rand(0, 501) : mt_rand(0, 1001)
 
-            foreach($categoria as $categoria => $produtos){
-                echo '<h2>' . $categoria . '</h2>';
-                echo '<div class="' . strtolower($categoria) . '" style="padding: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 8px;">';
-                foreach($produtos as $item){
-                    echo '<div class="Card">';
-                        echo '<div class="Desc_Prod">';
-                            echo '<div class="img_Prod"> <img src ="' . $link . '" alt="img_Produto"> </div>'; // img Produto
-                            echo '<p>Estoque: ' . $estoque . '</p>';
-                            echo '<span>' . $item["Nome"] . '</span>';
-                            echo '<span> R$ ' . number_format($item["Preço"], 2, ',', '.') . ' / kg</span>';
-                            echo '<button>Comprar</button>';
-                        echo '</div>';
-                    echo '</div>';
-                }
+            ?>
+                <div class="Card">
+                    <div class="Desc_Prod">
 
-                echo '</div>';
-            }
-        } catch(Exception $e){
-            echo "<p style='color:red'>Erro: " . $e->getMessage() . "</p>";
-        }
-    ?>
+                        <div class="img_Prod">
+                            <img src="<?= $link ?>" alt="img do Produto">
+                        </div>
+
+                        <p>Estoque: <?= mt_rand(0, 501) . " " . $item["Tipo"] ?> </p>
+                        <span> <?= $item["Nome"] ?> </span>
+                        <span>
+                            R$ <?= number_format($item["Preço"] - (0.01), 2, ',', '.') ?> 
+                            / <?= $item["Tipo"] ?> 
+                        </span>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+    <?php endforeach; ?>
 </body>
 </html>

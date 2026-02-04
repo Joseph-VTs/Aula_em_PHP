@@ -6,6 +6,12 @@
     outline: none;
 }
 
+body{
+    /* background-color: #BABABA; */
+    /* background-color: #62A001; */
+    background-color: wheat;
+}
+
 .Prods {
     display: flex;
     flex-direction: row;
@@ -16,7 +22,7 @@
 .Card {
     width: 10rem;
     border: 1px solid red;
-    padding: 6px;
+    background-color: white;
 
     display: flex;
     flex-direction: column;
@@ -37,14 +43,15 @@ img {
     align-items: start;
     justify-content: center;
     padding: 6px;
+    gap: 6px;
 }
 
 button {
     width: 100%;
     padding: 8px;
-    background-color: green;
+    background-color: limegreen;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: black;
     font-weight: 700;
     transition: scale 0.5s ease;
@@ -52,6 +59,10 @@ button {
 
 button:hover,
 .Card:hover {
-    scale: 0.95;
+    scale: 0.97;
     cursor: pointer;
+}
+
+span, p{
+    font-size: 0.9rem;
 }

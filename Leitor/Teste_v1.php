@@ -1,4 +1,4 @@
-<?php
+<?php // Pega item em baixo de item
 function lerTxt(string $arquivo): array {
     // 1. Verificação de existência e leitura
     if (!file_exists($arquivo)) {
@@ -40,7 +40,7 @@ $estoque = "345.870";
             
             foreach ($dados as $i => $linha) {
                 echo '<div class="Card">';
-                echo '<div class="img_Prod"> <img src ="' . $link . '" alt="img_Produto"> </div>'; // img Produto
+                    echo '<div class="img_Prod"> <img src ="' . $link . '" alt="img_Produto"> </div>'; // img Produto
                     echo '<div class="Desc_Prod">';
                         echo '<p>Estoque: ' . $estoque . '</p>';
                         echo '<span>' . $linha .  '</span>'; // Nome Produto

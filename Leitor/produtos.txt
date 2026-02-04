@@ -1,10 +1,5 @@
-Maçã
-Banana
-Laranja
-Mamão
-Manga
-Uva
-Abacaxi
-Melancia
-Pera
-Kiwi
+Frutas: Maçã=4.50, Banana=3.20, Laranja=5.00, Uva=7.80, Manga=6.00, Abacaxi=8.50, Melancia=12.00, Pera=6.50, Kiwi=9.20, Mamão=7.00
+Legumes: Cenoura=4.00, Beterraba=4.50, Abobrinha=5.00, Berinjela=6.00, Pepino=3.50, Tomate=7.00, Pimentão=6.20, Chuchu=3.00, Nabo=4.80, Rabanete=5.30
+Verduras: Alface=2.50, Rúcula=3.00, Espinafre=4.00, Couve=2.80, Agrião=3.50, Salsa=2.00, Cebolinha=2.20, Chicória=3.80, Endívia=5.00, Escarola=4.20
+Tubérculos: Batata Inglesa=3.50, Batata-doce=4.20, Mandioquinha=6.00, Inhame=5.50, Mandioca=4.00, Cará=4.80, Taro=6.50, Batata Roxa=5.20
+Outros: Cogumelo Paris=12.00, Cogumelo Shimeji=15.00, Milho Verde=3.80, Ervilha Fresca=6.20, Quiabo=4.50, Jiló=3.70, Okra=4.90, Pimenta Fresca=7.50

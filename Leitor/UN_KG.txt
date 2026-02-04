@@ -1,0 +1,9 @@
+Frutas: Melancia Fatiada=7/kg, Melancia=10.99/un, Banana=3.20/kg, Banana Nanica=2.80/kg, Maçã Gala=5.50/kg, Maçã=1.99/un, Uva=7.80/kg, Manga=6.00/un, Manga Fatiada=7.50/kg, Abacaxi=8.50/un, Abacaxi Fatiado=9.20/kg, Pera=6.50/kg, Kiwi=9.20/kg, Mamão=7.00/un, Mamão Fatiado=7.80/kg
+
+Legumes: Cenoura=4.00/kg, Cenoura Baby=5.50/kg, Beterraba=4.50/kg, Abobrinha=5.00/kg, Berinjela=6.00/kg, Pepino=3.50/kg, Tomate=7.00/kg, Tomate Cereja=8.50/kg, Pimentão Verde=6.20/kg, Pimentão Vermelho=6.80/kg, Chuchu=3.00/kg, Nabo=4.80/kg, Rabanete=5.30/kg, Mandioquinha=6.00/kg, Inhame=5.50/kg
+
+Verduras: Alface=2.50/un, Alface Crespa=2.80/un, Rúcula=3.00/un, Espinafre=4.00/un, Couve=2.80/un, Couve Fatiada=3.20/kg, Agrião=3.50/un, Salsa=2.00/un, Cebolinha=2.20/un, Chicória=3.80/un, Endívia=5.00/un, Escarola=4.20/un, Repolho=4.50/kg, Repolho Roxo=5.20/kg
+
+Tubérculos: Batata Inglesa=3.50/kg, Batata-doce=4.20/kg, Batata Roxa=5.20/kg, Mandioquinha=6.00/kg, Inhame=5.50/kg, Mandioca=4.00/kg, Cará=4.80/kg, Taro=6.50/kg, Batata Fatiada=3.80/kg, Batata Embalada=4.50/un, Batata Chips=7.00/kg, Batata Lavada=3.60/kg, Batata Orgânica=5.00/kg
+
+Outros: Cogumelo Paris=12.00/kg, Cogumelo Shimeji=15.00/kg, Cogumelo Portobello=18.00/kg, Milho Verde=3.80/un, Milho Debulhado=4.50/kg, Ervilha Fresca=6.20/kg, Ervilha Congelada=7.00/kg, Quiabo=4.50/kg, Jiló=3.70/kg, Okra=4.90/kg, Pimenta Fresca=7.50/kg, Pimenta Embalada=8.20/un, Gengibre=9.00/kg, Alho=12.00/kg

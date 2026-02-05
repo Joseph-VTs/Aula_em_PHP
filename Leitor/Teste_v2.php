@@ -1,6 +1,5 @@
 <?php
 $link = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FjIt36dtAb6NUmr4aCZmWGhkkcOmRxa2Zw&s";
-// $estoque = "394.795";
 
 function lerCategorias(string $arquivo): array {
 
@@ -90,13 +89,7 @@ try{
         <h2><?= $categoria ?></h2>
         <div id="<?= strtolower($categoria) ?>" style="padding: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 8px;">
             
-            <?php 
-                // $mapaTipos = ler_UN_KG(__DIR__ . "/UN_KG.txt");
-                foreach($produtos as $item):
-                    // $tipo = $mapaTipos[$item["Nome"]] ?? "kg"; // Padrão KG
-                    // $quantidade = ($tipo === "un") ? mt_rand(0, 501) : mt_rand(0, 1001)
-
-            ?>
+            <?php foreach($produtos as $item): ?>
                 <div class="Card">
                     <div class="Desc_Prod">
 

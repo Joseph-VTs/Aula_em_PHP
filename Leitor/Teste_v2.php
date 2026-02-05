@@ -2,46 +2,29 @@
 $link = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4FjIt36dtAb6NUmr4aCZmWGhkkcOmRxa2Zw&s";
 
 function lerCategorias(string $arquivo): array {
-
-    // 1.Verificação do arquivo
-    # file_exists() → checa se o arquivo existe.
-    # is_readable() → checa se pode ser lido.
     if(!file_exists($arquivo) || !is_readable($arquivo)) {
         throw new Exception("Arquivo não <b>Encontrado</b> ou não <b>Legível</b>: $arquivo");
     }
 
-    // 2.Leitura das linhas
-    # file() → lê todas as linhas do arquivo em um array.
-    # FILE_IGNORE_NEW_LINES → remove quebras de linha.
-    # FILE_SKIP_EMPTY_LINES → ignora linhas vazias.
     $linhas = file($arquivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $dados = [];
 
-    // 3.Separação da categoria e produtos
-    # explode(":", $linha) → divide a linha em duas partes:
-    # Antes dos : → categoria (ex.: "Frutas").
-    # Depois dos : → lista de produtos.
-    foreach($linhas as $linha){ // Divide categoria e lista de produtos
+    foreach($linhas as $linha){
 
-        // 4.Separação dos produtos
-        # explode(",", $produtosStr) → divide os produtos pela vírgula.
         list($categoria, $produtosStr) = explode(":", $linha);
-
-        # array_map("trim", ...) → remove espaços extras de cada produto.
         $produtos = array_map("trim", explode(",", $produtosStr));
 
-        foreach($produtos as $p){ // Divide Produtos e Preços
-            list($nome, $preco_UN) = explode("=", $p);
-            // Separa preço e tipo
+        foreach($produtos as $p){ // Nome=Preço/Unidade|Imagem
+
+            list($nome, $resto) = explode("=", $p);
+            list($preco_UN, $img) = explode("|", $resto);
             list($preco, $tipo) = explode("/", $preco_UN);
 
-            // 5.Montagem do array final
-            # $dados[trim($categoria)] = $produtos;
-            # Cria um array associativo onde a chave é a categoria e o valor é a lista de produtos.
             $dados[trim($categoria)][] = [
-                "Nome" => trim($nome),
-                "Preço" => (float) trim($preco),
-                "Tipo" => trim($tipo)
+                "Nome"      => trim($nome),
+                "Preço"     => (float) trim($preco),
+                "Tipo"      => trim($tipo),
+                "IMG"       => trim($img)
             ];
         }
     }
@@ -69,7 +52,7 @@ function ler_UN_KG(string $arquivo): array {
 }
 
 try{
-    $categorias = lerCategorias(__DIR__ . "/UN_KG.txt");
+    $categorias = lerCategorias(__DIR__ . "/Documentos txt/Com_imgs.txt");
 } catch(Exception $e){
     echo "<p style='color:red'>Erro: " . $e->getMessage() . "</p>";
     exit;
@@ -94,7 +77,7 @@ try{
                     <div class="Desc_Prod">
 
                         <div class="img_Prod">
-                            <img src="<?= $link ?>" alt="img do Produto">
+                            <img src="imagens/<?= $item["IMG"] ?>" alt="img do Produto">
                         </div>
 
                         <p>Estoque: <?= mt_rand(0, 501) . " " . $item["Tipo"] ?> </p>

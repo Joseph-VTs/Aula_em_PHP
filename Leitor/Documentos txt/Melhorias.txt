@@ -1,0 +1,57 @@
+📌 Funcionalidades importantes para um mercado online
+1. Carrinho de compras
+Botão “Comprar” adiciona o produto a um carrinho (array em sessão).
+
+Mostrar quantidade escolhida e subtotal.
+
+Exibir carrinho no topo ou em uma página dedicada.
+
+2. Busca e filtros
+Campo de busca para encontrar produtos pelo nome.
+
+Filtros por categoria (Frutas, Legumes, Verduras).
+
+Filtros por preço (ex.: até R$ 5,00, entre R$ 5,00 e R$ 10,00).
+
+3. Ordenação
+Ordenar produtos por preço (menor → maior).
+
+Ordenar por nome (A → Z).
+
+Ordenar por estoque disponível.
+
+4. Detalhes do produto
+Ao clicar no card, abrir uma página/modal com:
+
+Descrição detalhada.
+
+Foto maior.
+
+Informações nutricionais (se quiser enriquecer).
+
+5. Controle de estoque real
+Em vez de mt_rand(), ler o estoque de um arquivo ou banco de dados.
+
+Atualizar estoque quando o cliente compra.
+
+6. Design e usabilidade
+Layout responsivo (funcionar bem em celular).
+
+Botões claros e chamativos.
+
+Cores que remetem a frescor (verde, amarelo, laranja).
+
+7. Extras que agregam valor
+Promoções: destacar produtos em oferta.
+
+Etiqueta de novidade: marcar produtos recém-adicionados.
+
+Avaliações: permitir que clientes avaliem produtos.
+
+Login/Perfil: clientes podem salvar preferências e histórico.
+
+🎯 Conclusão
+Seu código já está ótimo para listar produtos com imagens, preços e estoque.
+O próximo passo é pensar em funcionalidades de e-commerce: carrinho, filtros, ordenação, promoções e responsividade. Isso transforma seu protótipo em um site de mercado de verdade.
+
+👉 Quer que eu te ajude a implementar um carrinho de compras simples em PHP/JS para começar a dar esse passo?
